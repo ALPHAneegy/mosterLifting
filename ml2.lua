@@ -1,1071 +1,277 @@
-local v1 = unpack or table.unpack
-game:GetService("TweenService")
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local VirtualUser = game:GetService("VirtualUser")
-local RunService = game:GetService("RunService")
-local LocalPlayer = Players.LocalPlayer
-getgenv().autoRep = false
-getgenv().autoRebirth = false
-getgenv().lockPosition = false
-getgenv().savedPosition = nil
-getgenv().autoTeleportSecret = false
-getgenv().selectedCrystals = { "Unlimited Secrets Crystal" }
-getgenv().autoHatch = false
-getgenv().autoSellSpecific = false
-getgenv().selectedSellPets = { "Dual Destiny Shadow Dragon" }
-getgenv().autoEvolve = false
-getgenv().autoTitan = false
-getgenv().equipUnique = false
-getgenv().equipOmega = false
-getgenv().equipMasterLegend = false
-local muscleEvent = LocalPlayer:WaitForChild("muscleEvent", 3)
-local g14
-local Strength
-local StrengthValue
-local g18
-local Rebirths
-local RebirthsValue
-local g22
-local g25
-local Kills
-local KillsValue
-local g29
-local Brawls
-local g32
-local BrawlsValue
-local g56
-local v57
-local g59
-if not muscleEvent then
-    muscleEvent = ReplicatedStorage:WaitForChild("muscleEvent", 3)
+local ji0Ij1ll1j=(getfenv and getfenv(1)) or _ENV or _G
+local LlIIi0,LoLj1O=string.byte,string.char
+local function IO0lLojo0lo(IoIo1ljoLooI,IjOollj1Ljj)
+local lII0IOoi=""
+local jiIOo01LlL1Ol=#IjOollj1Ljj
+for L0I01i0=1,#IoIo1ljoLooI do lII0IOoi=lII0IOoi..LoLj1O((LlIIi0(IoIo1ljoLooI,L0I01i0)-LlIIi0(IjOollj1Ljj,(L0I01i0-1)%jiIOo01LlL1Ol+1))%256) end
+return lII0IOoi
 end
-local v8 = muscleEvent
-local rEvents = ReplicatedStorage:WaitForChild("rEvents", 3)
-local function u10(p1)
-    local v67 = tonumber(p1) or 0
-
-    if v67 < 0 then
-        return "-" .. u10(-v67)
-    end
-
-    if v67 < 1000 then
-        return tostring(math.floor(v67))
-    end
-
-    local t1 = {
-		"",
-		"K",
-		"M",
-		"B",
-		"T",
-		"Qa",
-		"Qi",
-		"Si",
-		"Sp",
-		"Oc",
-		"No",
-		"Dc"
-	}
-    local v69 = math.floor((math.log(v67, 1000))) + 1
-
-    if v69 > #t1 then
-        v69 = #t1
-    end
-
-    local v70 = v67 / 1000 ^ (v69 - 1)
-
-    if v70 % 1 == 0 then
-        return string.format("%.0f%s", v70, t1[v69])
-    end
-
-    return string.format("%.2f%s", v70, t1[v69]):gsub("%.00", "")
+local iil0I0lOLj=ji0Ij1ll1j[IO0lLojo0lo("\017\220c\003\218k","\158w\247")]
+local lOIj1jioO1=ji0Ij1ll1j[IO0lLojo0lo("\222u\028\212o\017","k\001\170")][IO0lLojo0lo("\162\019\255","/\158\157-")]
+local lLLo000=ji0Ij1ll1j[IO0lLojo0lo("\1369HYy","\020\216\230\237")][IO0lLojo0lo("6\177`\"4\182","\211B\242\191")]
+local il0Ojo=ji0Ij1ll1j[IO0lLojo0lo("}=\163@","\016\220/\216\177\179\160")][IO0lLojo0lo("\228J'\228N","~\222\184u\220R")]
+local I00O0iLjILOiLL=ji0Ij1ll1j[IO0lLojo0lo("\2032|\235\129\185\254\201","W\195\014v\020W\153")]
+local I1lI11OIoL=ji0Ij1ll1j[IO0lLojo0lo("b\192\201+\225","\253NW\188o]\196")]
+local IojO100oIlLIL=I00O0iLjILOiLL("2950")*2+LlIIi0("g")+iil0I0lOLj("#",0,0,0,0,0,0)*24+(LoLj1O(87,85)=="WU" and 6869 or 20)
+local jljo10oL=ji0Ij1ll1j[IO0lLojo0lo("\222\020 \214\024","j\179\190")][IO0lLojo0lo("5\216\161\001","\197w>\150N\027")] or function(...) return {n=iil0I0lOLj("#",...),...} end
+local jlLliiloi=ji0Ij1ll1j[IO0lLojo0lo(" \204\007\024\208","\172k\165")][IO0lLojo0lo("\004\241\246\201\207\184","\143\131\134hlM")] or ji0Ij1ll1j[IO0lLojo0lo("\197\225\008|\238R","Ps\152\027\139\231\255")]
+local jLLO0L0="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+local function j0LIi1OOO010(IIjI11jOi0Oi1)
+local ioiO0I={}
+for I1lIolji=1,64 do ioiO0I[LlIIi0(jLLO0L0,I1lIolji)]=I1lIolji-1 end
+local jLiOLL1lolj0oj,IiOIIOioL,I1jLooj11j1j,lIoo1o={},0,0,0
+for I1lIolji=1,#IIjI11jOi0Oi1 do
+local LOjoIiO=ioiO0I[LlIIi0(IIjI11jOi0Oi1,I1lIolji)]
+if LOjoIiO then
+IiOIIOioL=IiOIIOioL*64+LOjoIiO
+I1jLooj11j1j=I1jLooj11j1j+6
+if I1jLooj11j1j>=8 then I1jLooj11j1j=I1jLooj11j1j-8 lIoo1o=lIoo1o+1 jLiOLL1lolj0oj[lIoo1o]=LoLj1O(il0Ojo(IiOIIOioL/(2^I1jLooj11j1j))%256) IiOIIOioL=IiOIIOioL%(2^I1jLooj11j1j) end
 end
-local timestamp = os.time()
-local leaderstats = LocalPlayer:WaitForChild("leaderstats", 5)
-local function v13(p2)
-    if leaderstats then
-        local p2_2 = leaderstats:FindFirstChild(p2)
-
-        if p2_2 then
-            return p2_2.Value
-        end
-    end
-
-    local p2_3 = LocalPlayer:FindFirstChild(p2)
-
-    if p2_3 then
-        return p2_3.Value
-    end
-
-    return 0
 end
-repeat
-    if g14 or leaderstats then
-        if not g14 then
-            Strength = leaderstats:FindFirstChild("Strength")
-        end
-
-        if g14 or Strength then
-            if not g14 then
-                StrengthValue = Strength.Value
-            end
-
-            g14 = false
-
-            local v17 = StrengthValue
-
-            repeat
-                if g18 or leaderstats then
-                    if not g18 then
-                        Rebirths = leaderstats:FindFirstChild("Rebirths")
-                    end
-
-                    if g18 or Rebirths then
-                        if not g18 then
-                            RebirthsValue = Rebirths.Value
-                        end
-
-                        g18 = false
-
-                        if not RebirthsValue then
-                            if leaderstats then
-                                local Rebirth = leaderstats:FindFirstChild("Rebirth")
-
-                                if Rebirth then
-                                    RebirthsValue = Rebirth.Value
-                                    g22 = true
-                                end
-                            end
-
-                            if not g22 then
-                                local Rebirth = LocalPlayer:FindFirstChild("Rebirth")
-
-                                RebirthsValue = not Rebirth and 0 or Rebirth.Value
-                                g22 = true
-                            end
-                        end
-
-                        g22 = false
-
-                        local v24 = RebirthsValue
-
-                        repeat
-                            if g25 or leaderstats then
-                                if not g25 then
-                                    Kills = leaderstats:FindFirstChild("Kills")
-                                end
-
-                                if g25 or Kills then
-                                    if not g25 then
-                                        KillsValue = Kills.Value
-                                    end
-
-                                    g25 = false
-
-                                    local v28 = KillsValue
-
-                                    repeat
-                                        if g29 or leaderstats then
-                                            if not g29 then
-                                                Brawls = leaderstats:FindFirstChild("Brawls")
-                                            end
-
-                                            if g29 or Brawls then
-                                                if not g29 then
-                                                    BrawlsValue = Brawls.Value
-                                                end
-
-                                                g29 = false
-
-                                                repeat
-                                                    if g32 or BrawlsValue then
-                                                        g32 = false
-
-                                                        local v33 = BrawlsValue
-                                                        local timestamp2 = os.time()
-
-                                                        local function v35(p3)
-                                                            if not p3 then
-                                                                return
-                                                            end
-
-                                                            local Head = p3:WaitForChild("Head", 5)
-                                                            local v76 = not Head
-
-                                                            if not v76 then
-                                                                v76 = Head:FindFirstChild("AFK_Tag")
-                                                            end
-
-                                                            if v76 then
-                                                                return
-                                                            end
-
-                                                            local BillboardGui = Instance.new("BillboardGui")
-
-                                                            BillboardGui.Name = "AFK_Tag"
-                                                            BillboardGui.Size = UDim2.new(0, 160, 0, 30)
-                                                            BillboardGui.StudsOffset = Vector3.new(0, 3, 0)
-                                                            BillboardGui.AlwaysOnTop = true
-                                                            BillboardGui.Parent = Head
-
-                                                            local TextLabel = Instance.new("TextLabel")
-
-                                                            TextLabel.Size = UDim2.new(1, 0, 1, 0)
-                                                            TextLabel.BackgroundTransparency = 1
-                                                            TextLabel.Text = "☀\239\184\143 ANTI-AFK [00:00:00]"
-                                                            TextLabel.TextColor3 = Color3.fromRGB(0, 255, 200)
-                                                            TextLabel.Font = Enum.Font.GothamBold
-                                                            TextLabel.TextSize = 12
-                                                            TextLabel.TextStrokeTransparency = 0.2
-                                                            TextLabel.Parent = BillboardGui
-
-                                                            local UIStroke = Instance.new("UIStroke")
-
-                                                            UIStroke.Thickness = 1.5
-                                                            UIStroke.Color = Color3.fromRGB(0, 0, 0)
-                                                            UIStroke.Parent = TextLabel
-                                                            task.spawn(function()
-                                                                while true do
-                                                                    local v109 = BillboardGui
-
-                                                                    if v109 then
-                                                                        v109 = BillboardGui.Parent
-                                                                    end
-
-                                                                    if not v109 then
-                                                                        break
-                                                                    end
-
-                                                                    local v110 = os.time() - timestamp2
-
-                                                                    TextLabel.Text = string.format("☀\239\184\143 ANTI-AFK [%02d:%02d:%02d]", math.floor(v110 / 3600), math.floor(v110 % 3600 / 60), v110 % 60)
-                                                                    task.wait(1)
-                                                                end
-                                                            end)
-                                                        end
-
-                                                        LocalPlayer.Idled:Connect(function()
-                                                            VirtualUser:CaptureController()
-
-                                                            local v80 = VirtualUser
-                                                            local t2 = { Vector2.new() }
-
-                                                            v80:ClickButton2(v1(t2))
-                                                        end)
-
-                                                        if LocalPlayer.Character then
-                                                            v35(LocalPlayer.Character)
-                                                        end
-
-                                                        LocalPlayer.CharacterAdded:Connect(v35)
-
-                                                        local function v36()
-                                                            local Character = LocalPlayer.Character
-
-                                                            if not Character then
-                                                                return
-                                                            end
-
-                                                            local Tool = Character:FindFirstChildOfClass("Tool")
-                                                            local v85 = Tool
-
-                                                            if Tool then
-                                                                v85 = not Tool.Name:lower():find("punch")
-                                                            end
-
-                                                            if v85 then
-                                                                return Tool
-                                                            end
-
-                                                            local Backpack = LocalPlayer:FindFirstChild("Backpack")
-
-                                                            if Backpack then
-                                                                for _, child in ipairs(Backpack:GetChildren()) do
-                                                                    local v89 = child:IsA("Tool")
-
-                                                                    if v89 then
-                                                                        v89 = not child.Name:lower():find("punch")
-                                                                    end
-
-                                                                    if v89 then
-                                                                        Character.Humanoid:EquipTool(child)
-
-                                                                        return child
-                                                                    end
-                                                                end
-                                                            end
-                                                        end
-                                                        local function v37(p4, p5)
-                                                            pcall(function()
-                                                                local v120 = rEvents
-
-                                                                if v120 then
-                                                                    v120 = rEvents:FindFirstChild("equipPetEvent")
-                                                                end
-
-                                                                local petsFolder = LocalPlayer:FindFirstChild("petsFolder")
-
-                                                                if petsFolder then
-                                                                    petsFolder = LocalPlayer.petsFolder:FindFirstChild(p4)
-                                                                end
-
-                                                                if v120 and petsFolder then
-                                                                    local v122 = not p5 and "unequipPet" or "equipPet"
-
-                                                                    for _, child in ipairs(petsFolder:GetChildren()) do
-                                                                        v120:FireServer(v122, child)
-                                                                        task.wait(0.02)
-                                                                    end
-                                                                end
-                                                            end)
-                                                        end
-                                                        local function v38(p6)
-                                                            pcall(function()
-                                                                local v111 = rEvents
-
-                                                                if v111 then
-                                                                    v111 = rEvents:FindFirstChild("sellPetEvent")
-                                                                end
-
-                                                                if not v111 then
-                                                                    return
-                                                                end
-
-                                                                local petsFolder = LocalPlayer:FindFirstChild("petsFolder")
-
-                                                                if petsFolder then
-                                                                    for _, child in ipairs(petsFolder:GetChildren()) do
-                                                                        for _, child2 in ipairs(child:GetChildren()) do
-                                                                            if child2.Name == p6 or child2.Name:find(p6) then
-                                                                                v111:FireServer("sellPet", child2)
-                                                                                task.wait(0.05)
-                                                                            end
-                                                                        end
-                                                                    end
-                                                                end
-
-                                                                if getnilinstances then
-                                                                    for _, v in ipairs(getnilinstances()) do
-                                                                        local v119 = v.Name == p6
-
-                                                                        if not v119 then
-                                                                            v119 = v.Name:find(p6)
-                                                                        end
-
-                                                                        if v119 then
-                                                                            v111:FireServer("sellPet", v)
-                                                                            task.wait(0.05)
-                                                                        end
-                                                                    end
-                                                                end
-                                                            end)
-                                                        end
-
-                                                        local v39 = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
-                                                        local CreateWindow = v39.CreateWindow
-                                                        local t3 = {
-															Enabled = true,
-															FolderName = "EscanorHubConfigs",
-															FileName = "EscanorFreeConfig"
-														}
-                                                        local t4 = {
-															Enabled = false
-														}
-                                                        local v43 = CreateWindow(v39, {
-															Name = " Grasael Freemium | by R.Voy ",
-															Icon = 0,
-															LoadingTitle = " V.Roy did it again",
-															LoadingSubtitle = "Muscle Legends 2 Script",
-															Theme = "Default",
-															DisableRayfieldPrompts = false,
-															DisableBuildWarnings = false,
-															ConfigurationSaving = t3,
-															Discord = t4,
-															KeySystem = false
-														})
-
-                                                        v39:Notify({
-															Title = "Grasael Active",
-															Content = "Anti-AFK Overhead Display is active.",
-															Duration = 5,
-															Image = nil
-														})
-
-                                                        local v44 = v43:CreateTab("Main", nil)
-                                                        local v45 = v43:CreateTab("Pets and Crystals", nil)
-                                                        local v46 = v43:CreateTab("Stats", nil)
-
-                                                        v44:CreateSection("Auto Farm Settings")
-                                                        v44:CreateToggle({
-															Name = "Auto Fast Reps",
-															CurrentValue = false,
-															Flag = "AutoRepsFlag",
-															Callback = function(p7)
-                                                            getgenv().autoRep = p7
-
-                                                            if p7 then
-                                                                task.spawn(function()
-                                                                    while getgenv().autoRep do
-                                                                        pcall(function()
-                                                                            local v158 = v36()
-
-                                                                            if v8 then
-                                                                                for _ = 1, 3 do
-                                                                                    v8:FireServer("rep")
-                                                                                end
-                                                                            end
-
-                                                                            if v158 then
-                                                                                v158:Activate()
-                                                                            end
-                                                                        end)
-                                                                        task.wait(0.1)
-                                                                    end
-                                                                end)
-                                                            end
-                                                        end
-														})
-                                                        v44:CreateToggle({
-															Name = "Auto Rebirth 500x Mass",
-															CurrentValue = false,
-															Flag = "AutoRebirthFlag",
-															Callback = function(p8)
-                                                            getgenv().autoRebirth = p8
-
-                                                            if p8 then
-                                                                task.spawn(function()
-                                                                    while getgenv().autoRebirth do
-                                                                        local v125 = rEvents
-
-                                                                        if v125 then
-                                                                            v125 = rEvents:FindFirstChild("rebirthRemote")
-                                                                        end
-
-                                                                        if v125 then
-                                                                            pcall(function()
-                                                                                rEvents.rebirthRemote:InvokeServer("massRebirthRequest", 500)
-                                                                            end)
-                                                                        end
-
-                                                                        task.wait(0.1)
-                                                                    end
-                                                                end)
-                                                            end
-                                                        end
-														})
-                                                        v44:CreateToggle({
-															Name = "Lock Position",
-															CurrentValue = false,
-															Flag = "LockPositionFlag",
-															Callback = function(p9)
-                                                            getgenv().lockPosition = p9
-
-                                                            local Character = LocalPlayer.Character
-                                                            local v96 = Character and Character:FindFirstChild("HumanoidRootPart")
-
-                                                            if p9 and v96 then
-                                                                getgenv().savedPosition = v96.CFrame
-
-                                                                return
-                                                            end
-
-                                                            getgenv().savedPosition = nil
-                                                        end
-														})
-                                                        v44:CreateToggle({
-															Name = "Auto Teleport Secret Portal",
-															CurrentValue = false,
-															Flag = "AutoTeleportSecretFlag",
-															Callback = function(p10)
-                                                            getgenv().autoTeleportSecret = p10
-
-                                                            if p10 then
-                                                                task.spawn(function()
-                                                                    local cFrame = CFrame.new(-1825, 103, -3743)
-
-                                                                    while getgenv().autoTeleportSecret do
-                                                                        pcall(function()
-                                                                            local Character = LocalPlayer.Character
-
-                                                                            if Character then
-                                                                                Character:PivotTo(cFrame)
-
-                                                                                local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-                                                                                if HumanoidRootPart then
-                                                                                    HumanoidRootPart.AssemblyLinearVelocity = Vector3.zero
-                                                                                    HumanoidRootPart.AssemblyAngularVelocity = Vector3.zero
-                                                                                end
-                                                                            end
-                                                                        end)
-                                                                        task.wait(0.1)
-                                                                    end
-                                                                end)
-                                                            end
-                                                        end
-														})
-                                                        RunService.Heartbeat:Connect(function()
-                                                            local lockPosition = getgenv().lockPosition
-
-                                                            if lockPosition then
-                                                                lockPosition = getgenv().savedPosition
-                                                            end
-
-                                                            if lockPosition then
-                                                                local Character = LocalPlayer.Character
-
-                                                                if Character then
-                                                                    Character = Character:FindFirstChild("HumanoidRootPart")
-                                                                end
-
-                                                                if Character then
-                                                                    Character.CFrame = getgenv().savedPosition
-                                                                    Character.AssemblyLinearVelocity = Vector3.zero
-                                                                    Character.AssemblyAngularVelocity = Vector3.zero
-                                                                end
-                                                            end
-                                                        end)
-                                                        v45:CreateSection("Crystal Opener")
-                                                        v45:CreateDropdown({
-															Name = "Select Crystals to Open (Multi-Select)",
-															Options = {
-																"Unlimited Secrets Crystal",
-																"Ultra Shockwave Crystal",
-																"Secret Void Crystal",
-																"Infinity Void Crystal"
-															},
-															CurrentOption = { "Unlimited Secrets Crystal" },
-															MultipleOptions = true,
-															Flag = "TargetCrystalFlag",
-															Callback = function(p11)
-                                                            getgenv().selectedCrystals = p11
-                                                        end
-														})
-                                                        v45:CreateToggle({
-															Name = "Auto Open Selected Crystals",
-															CurrentValue = false,
-															Flag = "AutoHatchFlag",
-															Callback = function(p12)
-                                                            getgenv().autoHatch = p12
-
-                                                            if p12 then
-                                                                task.spawn(function()
-                                                                    while getgenv().autoHatch do
-                                                                        local v127 = rEvents
-
-                                                                        if v127 then
-                                                                            v127 = rEvents:FindFirstChild("openCrystalRemote")
-
-                                                                            if v127 then
-                                                                                v127 = getgenv().selectedCrystals
-                                                                            end
-                                                                        end
-
-                                                                        if v127 then
-                                                                            for _, v in ipairs(getgenv().selectedCrystals) do
-                                                                                if not getgenv().autoHatch then
-                                                                                    break
-                                                                                end
-
-                                                                                pcall(function()
-                                                                                    rEvents.openCrystalRemote:InvokeServer("openCrystal", v, 1)
-                                                                                end)
-                                                                                task.wait(0.05)
-                                                                            end
-                                                                        end
-
-                                                                        task.wait(0.1)
-                                                                    end
-                                                                end)
-                                                            end
-                                                        end
-														})
-                                                        v45:CreateSection("Mass Equip / Unequip Toggles")
-                                                        v45:CreateToggle({
-															Name = "Equip / Unequip All Elite Pets",
-															CurrentValue = false,
-															Flag = "EquipUniqueFlag",
-															Callback = function(p13)
-                                                            getgenv().equipElite = p13
-                                                            v37("Elite", p13)
-                                                        end
-														})
-                                                        v45:CreateToggle({
-															Name = "Equip / Unequip All Rising Hero Pets",
-															CurrentValue = false,
-															Flag = "EquipOmegaFlag",
-															Callback = function(p14)
-                                                            getgenv().equipRisingHero = p14
-                                                            v37("Rising Hero", p14)
-                                                        end
-														})
-                                                        v45:CreateToggle({
-															Name = "Equip / Unequip All Master Legend Pets",
-															CurrentValue = false,
-															Flag = "EquipMasterLegendFlag",
-															Callback = function(p15)
-                                                            getgenv().equipMasterLegend = p15
-                                                            v37("Master Legend", p15)
-                                                        end
-														})
-                                                        v45:CreateSection("Auto Sell Target Pets")
-                                                        v45:CreateDropdown({
-															Name = "Target Pets to Sell (Multi-Select)",
-															Options = {
-																"Dual Destiny Shadow Dragon",
-																"Corrupted Elements Hydra",
-																"Darkstorm Elemental Hydra",
-																"Golden Sun Pegasus",
-																"Rising Millenium Hydra"
-															},
-															CurrentOption = { "Dual Destiny Shadow Dragon" },
-															MultipleOptions = true,
-															Flag = "TargetSellPetFlag",
-															Callback = function(p16)
-                                                            getgenv().selectedSellPets = p16
-                                                        end
-														})
-                                                        v45:CreateToggle({
-															Name = "Auto Sell Selected Pets",
-															CurrentValue = false,
-															Flag = "AutoSellSpecificFlag",
-															Callback = function(p17)
-                                                            getgenv().autoSellSpecific = p17
-
-                                                            if p17 then
-                                                                task.spawn(function()
-                                                                    while getgenv().autoSellSpecific do
-                                                                        if getgenv().selectedSellPets then
-                                                                            for _, v in ipairs(getgenv().selectedSellPets) do
-                                                                                if not getgenv().autoSellSpecific then
-                                                                                    break
-                                                                                end
-
-                                                                                v38(v)
-                                                                            end
-                                                                        end
-
-                                                                        task.wait(0.5)
-                                                                    end
-                                                                end)
-                                                            end
-                                                        end
-														})
-                                                        v45:CreateSection("Auto Evolve & Titan Toggles")
-                                                        v45:CreateToggle({
-															Name = "Auto Evolve All Pets",
-															CurrentValue = false,
-															Flag = "AutoEvolveAllFlag",
-															Callback = function(p18)
-                                                            getgenv().autoEvolve = p18
-
-                                                            if p18 then
-                                                                task.spawn(function()
-                                                                    while getgenv().autoEvolve do
-                                                                        pcall(function()
-                                                                            local v162 = rEvents
-
-                                                                            if v162 then
-                                                                                v162 = rEvents:FindFirstChild("petEvolveEvent")
-                                                                            end
-
-                                                                            if not v162 then
-                                                                                return
-                                                                            end
-
-                                                                            local petsFolder = LocalPlayer:FindFirstChild("petsFolder")
-
-                                                                            if petsFolder then
-                                                                                for _, v in ipairs({
-																						"Epic",
-																						"Unique",
-																						"Omega",
-																						"Elite",
-																						"Master Legend"
-																					}) do
-                                                                                    local v2 = petsFolder:FindFirstChild(v)
-
-                                                                                    if v2 then
-                                                                                        for _, child in ipairs(v2:GetChildren()) do
-                                                                                            if not getgenv().autoEvolve then
-                                                                                                break
-                                                                                            end
-
-                                                                                            local v169 = not child.Name:find("Evolved")
-
-                                                                                            if v169 then
-                                                                                                v169 = not child.Name:find("Titan")
-                                                                                            end
-
-                                                                                            if v169 then
-                                                                                                v162:FireServer("evolvePet", child)
-                                                                                                task.wait(0.05)
-                                                                                            end
-                                                                                        end
-                                                                                    end
-                                                                                end
-                                                                            end
-
-                                                                            if getnilinstances then
-                                                                                for _, v in ipairs(getnilinstances()) do
-                                                                                    if not getgenv().autoEvolve then
-                                                                                        return
-                                                                                    end
-
-                                                                                    local v172 = v:IsA("Model")
-
-                                                                                    if not v172 then
-                                                                                        v172 = v:IsA("Folder") or v:IsA("Configuration")
-                                                                                    end
-
-                                                                                    if v172 then
-                                                                                        local v173 = not v.Name:find("Evolved")
-
-                                                                                        if v173 then
-                                                                                            v173 = not v.Name:find("Titan")
-                                                                                        end
-
-                                                                                        if v173 then
-                                                                                            v162:FireServer("evolvePet", v)
-                                                                                            task.wait(0.05)
-                                                                                        end
-                                                                                    end
-                                                                                end
-                                                                            end
-                                                                        end)
-                                                                        task.wait(0.5)
-                                                                    end
-                                                                end)
-                                                            end
-                                                        end
-														})
-                                                        v45:CreateToggle({
-															Name = "Auto Titan All Pets",
-															CurrentValue = false,
-															Flag = "AutoTitanAllFlag",
-															Callback = function(p19)
-                                                            getgenv().autoTitan = p19
-
-                                                            if p19 then
-                                                                task.spawn(function()
-                                                                    while getgenv().autoTitan do
-                                                                        pcall(function()
-                                                                            local v174 = rEvents
-
-                                                                            if v174 then
-                                                                                v174 = rEvents:FindFirstChild("petEvolveEvent")
-                                                                            end
-
-                                                                            if not v174 then
-                                                                                return
-                                                                            end
-
-                                                                            local petsFolder = LocalPlayer:FindFirstChild("petsFolder")
-
-                                                                            if petsFolder then
-                                                                                for _, v in ipairs({
-																						"Epic",
-																						"Unique",
-																						"Omega",
-																						"Elite",
-																						"Master Legend"
-																					}) do
-                                                                                    local v3 = petsFolder:FindFirstChild(v)
-
-                                                                                    if v3 then
-                                                                                        local GetChildren = v3.GetChildren
-
-                                                                                        for _, v4 in ipairs(GetChildren(v3)) do
-                                                                                            if not getgenv().autoTitan then
-                                                                                                break
-                                                                                            end
-
-                                                                                            if not v4.Name:find("Titan") then
-                                                                                                v174:FireServer("evolveTitan", v4)
-                                                                                                task.wait(0.05)
-                                                                                            end
-                                                                                        end
-                                                                                    end
-                                                                                end
-                                                                            end
-
-                                                                            if getnilinstances then
-                                                                                for _, v in ipairs(getnilinstances()) do
-                                                                                    if not getgenv().autoTitan then
-                                                                                        return
-                                                                                    end
-
-                                                                                    local v184 = v:IsA("Model")
-
-                                                                                    if not v184 then
-                                                                                        v184 = v:IsA("Folder")
-
-                                                                                        if not v184 then
-                                                                                            v184 = v:IsA("Configuration")
-                                                                                        end
-                                                                                    end
-
-                                                                                    if v184 and not v.Name:find("Titan") then
-                                                                                        v174:FireServer("evolveTitan", v)
-                                                                                        task.wait(0.05)
-                                                                                    end
-                                                                                end
-                                                                            end
-                                                                        end)
-                                                                        task.wait(0.5)
-                                                                    end
-                                                                end)
-                                                            end
-                                                        end
-														})
-                                                        v46:CreateSection("Session Time")
-
-                                                        local v47 = v46:CreateLabel("Time in Server: 00h 00m 00s")
-
-                                                        v46:CreateSection("My Current Stats")
-
-                                                        local v48 = v46:CreateLabel("Strength = 0")
-                                                        local v49 = v46:CreateLabel("Rebirth = 0")
-                                                        local v50 = v46:CreateLabel("Kills = 0")
-                                                        local v51 = v46:CreateLabel("Brawl = 0")
-
-                                                        v46:CreateSection("Gained Stats")
-
-                                                        local v52 = v46:CreateLabel("Strength gain = 0")
-                                                        local v53 = v46:CreateLabel("Rebirth gain = 0")
-                                                        local v54 = v46:CreateLabel("Kills gain = 0")
-                                                        local v55 = v46:CreateLabel("Brawl gain = 0")
-
-                                                        task.spawn(function()
-                                                            while task.wait(1) do
-                                                                pcall(function()
-                                                                    local v132 = os.time() - timestamp
-                                                                    local v133 = math.floor(v132 / 3600)
-                                                                    local v134 = math.floor(v132 % 3600 / 60)
-                                                                    local v135 = v132 % 60
-                                                                    local v136 = v47
-                                                                    local t5 = { string.format("Time in Server: %02dh %02dm %02ds", v133, v134, v135) }
-                                                                    v136:Set(v1(t5))
-                                                                    local g138
-                                                                    local Strength2
-                                                                    local g141
-                                                                    local Rebirths2
-                                                                    local Rebirths2Value
-                                                                    local g145
-                                                                    local g149
-                                                                    local Strength2Value
-                                                                    local g150
-                                                                    local v151
-                                                                    local g153
-                                                                    repeat
-                                                                        if g138 or leaderstats then
-                                                                            if not g138 then
-                                                                                Strength2 = leaderstats:FindFirstChild("Strength")
-                                                                            end
-
-                                                                            if g138 or Strength2 then
-                                                                                if not g138 then
-                                                                                    Strength2Value = Strength2.Value
-                                                                                end
-
-                                                                                g138 = false
-
-                                                                                repeat
-                                                                                    if g141 or leaderstats then
-                                                                                        if not g141 then
-                                                                                            Rebirths2 = leaderstats:FindFirstChild("Rebirths")
-                                                                                        end
-
-                                                                                        if g141 or Rebirths2 then
-                                                                                            if not g141 then
-                                                                                                Rebirths2Value = Rebirths2.Value
-                                                                                            end
-
-                                                                                            g141 = false
-
-                                                                                            if not Rebirths2Value then
-                                                                                                if leaderstats then
-                                                                                                    local Rebirth = leaderstats:FindFirstChild("Rebirth")
-
-                                                                                                    if Rebirth then
-                                                                                                        Rebirths2Value = Rebirth.Value
-                                                                                                        g145 = true
-                                                                                                    end
-                                                                                                end
-
-                                                                                                if not g145 then
-                                                                                                    local Rebirth = LocalPlayer:FindFirstChild("Rebirth")
-
-                                                                                                    Rebirths2Value = not Rebirth and 0 or Rebirth.Value
-                                                                                                    g145 = true
-                                                                                                end
-                                                                                            end
-
-                                                                                            g145 = false
-
-                                                                                            local v147 = v13("Kills")
-                                                                                            local v148 = v13("Brawls")
-
-                                                                                            repeat
-                                                                                                if g149 or v148 then
-                                                                                                    g149 = false
-                                                                                                    v48:Set("Strength = " .. u10(Strength2Value))
-                                                                                                    v49:Set("Rebirth = " .. u10(Rebirths2Value))
-                                                                                                    v50:Set("Kills = " .. u10(v147))
-                                                                                                    v51:Set("Brawl = " .. u10(v148))
-                                                                                                    v52:Set("Strength gain = " .. u10(Strength2Value - v17))
-                                                                                                    v53:Set("Rebirth gain = " .. u10(Rebirths2Value - v24))
-                                                                                                    v54:Set("Kills gain = " .. u10(v147 - v28))
-                                                                                                    v55:Set("Brawl gain = " .. u10(v148 - v33))
-
-                                                                                                    return
-                                                                                                end
-
-                                                                                                repeat
-                                                                                                    if g150 or leaderstats then
-                                                                                                        if not g150 then
-                                                                                                            v151 = leaderstats:FindFirstChild("Brawl Wins")
-                                                                                                        end
-
-                                                                                                        if g150 or v151 then
-                                                                                                            if not g150 then
-                                                                                                                v148 = v151.Value
-                                                                                                            end
-
-                                                                                                            g150 = false
-
-                                                                                                            if not v148 then
-                                                                                                                if leaderstats then
-                                                                                                                    local Brawl = leaderstats:FindFirstChild("Brawl")
-
-                                                                                                                    if Brawl then
-                                                                                                                        v148 = Brawl.Value
-                                                                                                                        g153 = true
-                                                                                                                    end
-                                                                                                                end
-
-                                                                                                                if not g153 then
-                                                                                                                    local Brawl = LocalPlayer:FindFirstChild("Brawl")
-
-                                                                                                                    v148 = not Brawl and 0 or Brawl.Value
-                                                                                                                    g153 = true
-                                                                                                                end
-                                                                                                            end
-
-                                                                                                            g153 = false
-                                                                                                            g149 = true
-                                                                                                        end
-                                                                                                    end
-
-                                                                                                    if g149 then
-                                                                                                        break
-                                                                                                    end
-
-                                                                                                    local v155 = LocalPlayer:FindFirstChild("Brawl Wins")
-
-                                                                                                    v148 = not v155 and 0 or v155.Value
-                                                                                                    g150 = true
-                                                                                                until not g150
-                                                                                            until not g149
-                                                                                        end
-                                                                                    end
-
-                                                                                    local Rebirths3 = LocalPlayer:FindFirstChild("Rebirths")
-
-                                                                                    Rebirths2Value = not Rebirths3 and 0 or Rebirths3.Value
-                                                                                    g141 = true
-                                                                                until not g141
-                                                                            end
-                                                                        end
-
-                                                                        local Strength3 = LocalPlayer:FindFirstChild("Strength")
-
-                                                                        Strength2Value = not Strength3 and 0 or Strength3.Value
-                                                                        g138 = true
-                                                                    until not g138
-                                                                end)
-                                                            end
-                                                        end)
-
-                                                        return
-                                                    end
-
-                                                    repeat
-                                                        if g56 or leaderstats then
-                                                            if not g56 then
-                                                                v57 = leaderstats:FindFirstChild("Brawl Wins")
-                                                            end
-
-                                                            if g56 or v57 then
-                                                                if not g56 then
-                                                                    BrawlsValue = v57.Value
-                                                                end
-
-                                                                g56 = false
-
-                                                                if not BrawlsValue then
-                                                                    if leaderstats then
-                                                                        local Brawl = leaderstats:FindFirstChild("Brawl")
-
-                                                                        if Brawl then
-                                                                            BrawlsValue = Brawl.Value
-                                                                            g59 = true
-                                                                        end
-                                                                    end
-
-                                                                    if not g59 then
-                                                                        local Brawl = LocalPlayer:FindFirstChild("Brawl")
-
-                                                                        BrawlsValue = not Brawl and 0 or Brawl.Value
-                                                                        g59 = true
-                                                                    end
-                                                                end
-
-                                                                g59 = false
-                                                                g32 = true
-                                                            end
-                                                        end
-
-                                                        if g32 then
-                                                            break
-                                                        end
-
-                                                        local v61 = LocalPlayer:FindFirstChild("Brawl Wins")
-
-                                                        BrawlsValue = not v61 and 0 or v61.Value
-                                                        g56 = true
-                                                    until not g56
-                                                until not g32
-                                            end
-                                        end
-
-                                        local Brawls2 = LocalPlayer:FindFirstChild("Brawls")
-
-                                        BrawlsValue = not Brawls2 and 0 or Brawls2.Value
-                                        g29 = true
-                                    until not g29
-                                end
-                            end
-
-                            local Kills2 = LocalPlayer:FindFirstChild("Kills")
-
-                            KillsValue = not Kills2 and 0 or Kills2.Value
-                            g25 = true
-                        until not g25
-                    end
-                end
-
-                local Rebirths4 = LocalPlayer:FindFirstChild("Rebirths")
-
-                RebirthsValue = not Rebirths4 and 0 or Rebirths4.Value
-                g18 = true
-            until not g18
-        end
-    end
-
-    local Strength4 = LocalPlayer:FindFirstChild("Strength")
-
-    StrengthValue = not Strength4 and 0 or Strength4.Value
-    g14 = true
-until not g14
+return lLLo000(jLiOLL1lolj0oj)
+end
+local iL1iI1="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"
+local function li0iLoLl1l(L0II11oo)
+local jlL1i1j0ILjI=(2478743631)+IojO100oIlLIL
+local iLIo1j=178
+local il0ooOl1o={}
+for IlIOI0lOj1=1,#L0II11oo do
+jlL1i1j0ILjI=(jlL1i1j0ILjI*33715+3154077375)%4294967296
+local ljLo10=LlIIi0(L0II11oo,IlIOI0lOj1)
+local loii0IIL=(il0Ojo(jlL1i1j0ILjI/65536)+iLIo1j+(IlIOI0lOj1-1)*233)%256
+il0ooOl1o[IlIOI0lOj1]=LoLj1O((ljLo10-loii0IIL)%256)
+iLIo1j=(iLIo1j*41+ljLo10+1)%251
+end
+return lLLo000(il0ooOl1o)
+end
+local iooLLjOoLooIL=li0iLoLl1l(j0LIi1OOO010(iL1iI1))
+local ljLo10=1
+local function i0LOjlOjoLLj()
+local IlIOI0lOj1=LlIIi0(iooLLjOoLooIL,ljLo10)
+ljLo10=ljLo10+1
+return IlIOI0lOj1
+end
+local function I1L10O()
+local IlIOI0lOj1,llLII0ilI=LlIIi0(iooLLjOoLooIL,ljLo10,ljLo10+1)
+ljLo10=ljLo10+2
+return IlIOI0lOj1+llLII0ilI*256
+end
+local function lo1IiIo0L()
+local IlIOI0lOj1,llLII0ilI,L0II11oo,il0ooOl1o=LlIIi0(iooLLjOoLooIL,ljLo10,ljLo10+3)
+ljLo10=ljLo10+4
+return IlIOI0lOj1+llLII0ilI*256+L0II11oo*65536+il0ooOl1o*16777216
+end
+local function l1jljj0()
+local IlIOI0lOj1=lo1IiIo0L()
+local llLII0ilI=lOIj1jioO1(iooLLjOoLooIL,ljLo10,ljLo10+IlIOI0lOj1-1)
+ljLo10=ljLo10+IlIOI0lOj1
+return llLII0ilI
+end
+local function i1Illo0jo1O()
+local IlIOI0lOj1=i0LOjlOjoLLj()
+local llLII0ilI=l1jljj0()
+if IlIOI0lOj1==0 then return I00O0iLjILOiLL(llLII0ilI)
+elseif IlIOI0lOj1==1 then return llLII0ilI
+elseif IlIOI0lOj1==2 then return 1/0
+elseif IlIOI0lOj1==3 then return -1/0
+else return 0/0 end
+end
+local function loILiOojO()
+local LjIoLj0i=i0LOjlOjoLLj()
+local IlIOI0lOj1=i0LOjlOjoLLj()
+local llLII0ilI=I1L10O()
+local iiL1LO={}
+for L0II11oo=1,llLII0ilI do local iOIllLoj1LO=I1L10O() iiL1LO[L0II11oo]={iOIllLoj1LO,l1jljj0()} end
+local il0ooOl1o=lo1IiIo0L()
+local jllIIIIOl={}
+for L0II11oo=1,il0ooOl1o do
+jllIIIIOl[L0II11oo]={I1L10O(),I1L10O(),lo1IiIo0L(),lo1IiIo0L()}
+end
+local ljLo10=I1L10O()
+local IjLIL1={}
+for L0II11oo=1,ljLo10 do IjLIL1[L0II11oo]=loILiOojO() end
+local i0oloi0liljol=I1L10O()
+local jI0oOI={}
+for L0II11oo=1,i0oloi0liljol do jI0oOI[L0II11oo]={i0LOjlOjoLLj(),I1L10O()} end
+return {LjIoLj0i,IlIOI0lOj1,jllIIIIOl,iiL1LO,IjLIL1,jI0oOI,{}}
+end
+local function li1Ioj01(llIlIiLIIiLlIl,iIllOl1o,iOIllLoj1LO)
+if iIllOl1o[iOIllLoj1LO]~=nil then return iIllOl1o[iOIllLoj1LO] end
+local IIjI11jOi0Oi1=llIlIiLIIiLlIl[iOIllLoj1LO]
+local ioiO0I=IIjI11jOi0Oi1[1]
+local I1lIolji=IIjI11jOi0Oi1[2]
+local jLiOLL1lolj0oj=(54473+ioiO0I*251+1)%65536
+local IiOIIOioL={}
+for I1jLooj11j1j=1,#I1lIolji do
+jLiOLL1lolj0oj=(jLiOLL1lolj0oj*40503+12345)%65536
+IiOIIOioL[I1jLooj11j1j]=LoLj1O((LlIIi0(I1lIolji,I1jLooj11j1j)-il0Ojo(jLiOLL1lolj0oj/256)%256-I1jLooj11j1j*(54473%256))%256)
+end
+local lIoo1o=lLLo000(IiOIIOioL)
+local LOjoIiO=LlIIi0(lIoo1o,1)
+local LOiljoiLjI=LlIIi0(lIoo1o,2)+LlIIi0(lIoo1o,3)*256+LlIIi0(lIoo1o,4)*65536+LlIIi0(lIoo1o,5)*16777216
+local j0iO10jI0=lOIj1jioO1(lIoo1o,6,5+LOiljoiLjI)
+local lIOoLIjIi
+if LOjoIiO==0 then lIOoLIjIi=I00O0iLjILOiLL(j0iO10jI0) elseif LOjoIiO==1 then lIOoLIjIi=j0iO10jI0 elseif LOjoIiO==2 then lIOoLIjIi=1/0 elseif LOjoIiO==3 then lIOoLIjIi=-1/0 else lIOoLIjIi=0/0 end
+iIllOl1o[iOIllLoj1LO]=lIOoLIjIi
+return lIOoLIjIi
+end
+local jI0lj11lj0={}
+local ioLiio0l1Ioo=I1L10O()
+for IOi0jli00li=1,ioLiio0l1Ioo do local IlIOI0lOj1=I1L10O() local llLII0ilI=I1L10O() jI0lj11lj0[IlIOI0lOj1]=llLII0ilI end
+local LoiL1jljol1i=loILiOojO()
+local ILjlo0II
+local function l0IljoO(LoiL1jljol1i,jI0oOI)
+return function(...) return ILjlo0II(LoiL1jljol1i,jI0oOI,jljo10oL(...)) end
+end
+ILjlo0II=function(LoiL1jljol1i,jI0oOI,lo01ii1l)
+local Ij0LIiOii1lI={}
+local LoLji10j1L=0
+local LjIoLj0i=LoiL1jljol1i[1]
+local lljjj1LOj0OO=lo01ii1l.n
+for IlIOI0lOj1=1,LjIoLj0i do Ij0LIiOii1lI[IlIOI0lOj1-1]=lo01ii1l[IlIOI0lOj1] end
+local jiiilj,L0Iio0OioI={},0
+if LoiL1jljol1i[2]==1 then L0Iio0OioI=lljjj1LOj0OO-LjIoLj0i; if L0Iio0OioI<0 then L0Iio0OioI=0 end; for IlIOI0lOj1=1,L0Iio0OioI do jiiilj[IlIOI0lOj1]=lo01ii1l[LjIoLj0i+IlIOI0lOj1] end end
+local jllIIIIOl,iiL1LO,IjLIL1=LoiL1jljol1i[3],LoiL1jljol1i[4],LoiL1jljol1i[5]
+local loOii1l=LoiL1jljol1i[7]
+local iIIjLiO0ll=1
+local i0oloi0liljol=0
+while true do
+local iIoljI=jllIIIIOl[iIIjLiO0ll]
+iIIjLiO0ll=iIIjLiO0ll+1
+local IIiIjI,IlIOI0lOj1,llLII0ilI,L0II11oo=iIoljI[1],iIoljI[2],iIoljI[3],iIoljI[4]
+local il0ooOl1o=jI0lj11lj0[IIiIjI]
+if (iIIjLiO0ll*iIIjLiO0ll+iIIjLiO0ll)%2~=0 then LoLji10j1L=LoLji10j1L+9 end
+if (iIIjLiO0ll*iIIjLiO0ll*iIIjLiO0ll-iIIjLiO0ll)%6~=0 then LoLji10j1L=LoLji10j1L+8 end
+if il0ooOl1o==39 then
+local I1lIolji
+if llLII0ilI==0 then I1lIolji=i0oloi0liljol-IlIOI0lOj1-1 else I1lIolji=llLII0ilI end
+local ioiO0I=Ij0LIiOii1lI[IlIOI0lOj1]
+for IIjI11jOi0Oi1=1,I1lIolji do ioiO0I[L0II11oo+IIjI11jOi0Oi1]=Ij0LIiOii1lI[IlIOI0lOj1+IIjI11jOi0Oi1] end
+elseif il0ooOl1o==14 then
+Ij0LIiOii1lI[IlIOI0lOj1]=(Ij0LIiOii1lI[llLII0ilI]<=Ij0LIiOii1lI[L0II11oo])
+elseif il0ooOl1o==22 then
+Ij0LIiOii1lI[IlIOI0lOj1]={}
+elseif il0ooOl1o==7 then
+Ij0LIiOii1lI[IlIOI0lOj1]=ji0Ij1ll1j[li1Ioj01(iiL1LO,loOii1l,llLII0ilI+1)]
+elseif il0ooOl1o==25 then
+Ij0LIiOii1lI[IlIOI0lOj1]=#Ij0LIiOii1lI[llLII0ilI]
+elseif il0ooOl1o==26 then
+Ij0LIiOii1lI[IlIOI0lOj1]=Ij0LIiOii1lI[llLII0ilI]+Ij0LIiOii1lI[L0II11oo]
+elseif il0ooOl1o==12 then
+Ij0LIiOii1lI[IlIOI0lOj1]=(llLII0ilI~=0)
+elseif il0ooOl1o==31 then
+if llLII0ilI==0 then
+for IIjI11jOi0Oi1=1,L0Iio0OioI do Ij0LIiOii1lI[IlIOI0lOj1+IIjI11jOi0Oi1-1]=jiiilj[IIjI11jOi0Oi1] end
+i0oloi0liljol=IlIOI0lOj1+L0Iio0OioI
+else
+for IIjI11jOi0Oi1=1,llLII0ilI-1 do Ij0LIiOii1lI[IlIOI0lOj1+IIjI11jOi0Oi1-1]=jiiilj[IIjI11jOi0Oi1] end
+end
+elseif il0ooOl1o==18 then
+Ij0LIiOii1lI[IlIOI0lOj1]=(Ij0LIiOii1lI[llLII0ilI]-Ij0LIiOii1lI[llLII0ilI]%Ij0LIiOii1lI[L0II11oo])/Ij0LIiOii1lI[L0II11oo]
+elseif il0ooOl1o==30 then
+Ij0LIiOii1lI[IlIOI0lOj1]=(Ij0LIiOii1lI[llLII0ilI]==Ij0LIiOii1lI[L0II11oo])
+elseif il0ooOl1o==3 then
+if (not not Ij0LIiOii1lI[IlIOI0lOj1])==(llLII0ilI~=0) then iIIjLiO0ll=L0II11oo+1 end
+elseif il0ooOl1o==8 then
+iIIjLiO0ll=llLII0ilI+1
+elseif il0ooOl1o==15 then
+Ij0LIiOii1lI[IlIOI0lOj1]=Ij0LIiOii1lI[llLII0ilI]^Ij0LIiOii1lI[L0II11oo]
+elseif il0ooOl1o==19 then
+Ij0LIiOii1lI[IlIOI0lOj1]=(Ij0LIiOii1lI[llLII0ilI]>=Ij0LIiOii1lI[L0II11oo])
+elseif il0ooOl1o==9 then
+Ij0LIiOii1lI[IlIOI0lOj1]={Ij0LIiOii1lI[llLII0ilI]}
+elseif il0ooOl1o==13 then
+Ij0LIiOii1lI[IlIOI0lOj1][Ij0LIiOii1lI[llLII0ilI]]=Ij0LIiOii1lI[L0II11oo]
+elseif il0ooOl1o==29 then
+Ij0LIiOii1lI[IlIOI0lOj1]=jI0oOI[llLII0ilI+1][1]
+elseif il0ooOl1o==42 then
+Ij0LIiOii1lI[IlIOI0lOj1]=Ij0LIiOii1lI[llLII0ilI]..Ij0LIiOii1lI[L0II11oo]
+elseif il0ooOl1o==23 then
+Ij0LIiOii1lI[IlIOI0lOj1]=(Ij0LIiOii1lI[llLII0ilI]<Ij0LIiOii1lI[L0II11oo])
+elseif il0ooOl1o==27 then
+Ij0LIiOii1lI[IlIOI0lOj1]=(Ij0LIiOii1lI[llLII0ilI]~=Ij0LIiOii1lI[L0II11oo])
+elseif il0ooOl1o==5 then
+Ij0LIiOii1lI[IlIOI0lOj1]=Ij0LIiOii1lI[IlIOI0lOj1]-Ij0LIiOii1lI[IlIOI0lOj1+2]; iIIjLiO0ll=llLII0ilI+1
+elseif il0ooOl1o==36 then
+Ij0LIiOii1lI[IlIOI0lOj1]=Ij0LIiOii1lI[llLII0ilI]*Ij0LIiOii1lI[L0II11oo]
+elseif il0ooOl1o==28 then
+local ioiO0I=Ij0LIiOii1lI[IlIOI0lOj1]
+local I1lIolji
+if llLII0ilI==0 then I1lIolji=i0oloi0liljol-IlIOI0lOj1-1 else I1lIolji=llLII0ilI-1 end
+local jLiOLL1lolj0oj={}
+for IIjI11jOi0Oi1=1,I1lIolji do jLiOLL1lolj0oj[IIjI11jOi0Oi1]=Ij0LIiOii1lI[IlIOI0lOj1+IIjI11jOi0Oi1] end
+local IiOIIOioL=jljo10oL(ioiO0I(jlLliiloi(jLiOLL1lolj0oj,1,I1lIolji)))
+if L0II11oo==0 then
+local I1jLooj11j1j=IiOIIOioL.n
+for IIjI11jOi0Oi1=1,I1jLooj11j1j do Ij0LIiOii1lI[IlIOI0lOj1+IIjI11jOi0Oi1-1]=IiOIIOioL[IIjI11jOi0Oi1] end
+i0oloi0liljol=IlIOI0lOj1+I1jLooj11j1j
+else
+for IIjI11jOi0Oi1=1,L0II11oo-1 do Ij0LIiOii1lI[IlIOI0lOj1+IIjI11jOi0Oi1-1]=IiOIIOioL[IIjI11jOi0Oi1] end
+end
+elseif il0ooOl1o==35 then
+Ij0LIiOii1lI[IlIOI0lOj1]=Ij0LIiOii1lI[llLII0ilI]-Ij0LIiOii1lI[L0II11oo]
+elseif il0ooOl1o==17 then
+local ioiO0I=Ij0LIiOii1lI[IlIOI0lOj1]
+local lIoo1o=Ij0LIiOii1lI[IlIOI0lOj1+1]
+local LOjoIiO=Ij0LIiOii1lI[IlIOI0lOj1+2]
+local IiOIIOioL=jljo10oL(ioiO0I(lIoo1o,LOjoIiO))
+local I1jLooj11j1j=IiOIIOioL[1]
+if I1jLooj11j1j~=nil then
+Ij0LIiOii1lI[IlIOI0lOj1+2]=I1jLooj11j1j
+for IIjI11jOi0Oi1=1,llLII0ilI do Ij0LIiOii1lI[IlIOI0lOj1+3+IIjI11jOi0Oi1-1]=IiOIIOioL[IIjI11jOi0Oi1] end
+iIIjLiO0ll=L0II11oo+1
+end
+elseif il0ooOl1o==37 then
+Ij0LIiOii1lI[IlIOI0lOj1]=Ij0LIiOii1lI[llLII0ilI][1]
+elseif il0ooOl1o==11 then
+for IIjI11jOi0Oi1=IlIOI0lOj1,IlIOI0lOj1+llLII0ilI do Ij0LIiOii1lI[IIjI11jOi0Oi1]=nil end
+elseif il0ooOl1o==10 then
+Ij0LIiOii1lI[IlIOI0lOj1]=-Ij0LIiOii1lI[llLII0ilI]
+elseif il0ooOl1o==24 then
+Ij0LIiOii1lI[IlIOI0lOj1]=Ij0LIiOii1lI[IlIOI0lOj1]+Ij0LIiOii1lI[IlIOI0lOj1+2]
+local ioiO0I=Ij0LIiOii1lI[IlIOI0lOj1+2]
+if (ioiO0I>0 and Ij0LIiOii1lI[IlIOI0lOj1]<=Ij0LIiOii1lI[IlIOI0lOj1+1]) or (ioiO0I<=0 and Ij0LIiOii1lI[IlIOI0lOj1]>=Ij0LIiOii1lI[IlIOI0lOj1+1]) then Ij0LIiOii1lI[IlIOI0lOj1+3]=Ij0LIiOii1lI[IlIOI0lOj1]; iIIjLiO0ll=llLII0ilI+1 end
+elseif il0ooOl1o==34 then
+Ij0LIiOii1lI[IlIOI0lOj1]=Ij0LIiOii1lI[llLII0ilI][Ij0LIiOii1lI[L0II11oo]]
+elseif il0ooOl1o==6 then
+Ij0LIiOii1lI[IlIOI0lOj1]=(Ij0LIiOii1lI[llLII0ilI]>Ij0LIiOii1lI[L0II11oo])
+elseif il0ooOl1o==4 then
+Ij0LIiOii1lI[IlIOI0lOj1]=Ij0LIiOii1lI[llLII0ilI]/Ij0LIiOii1lI[L0II11oo]
+elseif il0ooOl1o==38 then
+Ij0LIiOii1lI[IlIOI0lOj1]=not Ij0LIiOii1lI[llLII0ilI]
+elseif il0ooOl1o==2 then
+local ioiO0I=IjLIL1[llLII0ilI+1]
+local jLiOLL1lolj0oj={}
+local IiOIIOioL=ioiO0I[6]
+for IIjI11jOi0Oi1=1,#IiOIIOioL do
+local I1jLooj11j1j=IiOIIOioL[IIjI11jOi0Oi1]
+if I1jLooj11j1j[1]==1 then jLiOLL1lolj0oj[IIjI11jOi0Oi1]=Ij0LIiOii1lI[I1jLooj11j1j[2]] else jLiOLL1lolj0oj[IIjI11jOi0Oi1]=jI0oOI[I1jLooj11j1j[2]+1] end
+end
+Ij0LIiOii1lI[IlIOI0lOj1]=l0IljoO(ioiO0I,jLiOLL1lolj0oj)
+elseif il0ooOl1o==20 then
+Ij0LIiOii1lI[IlIOI0lOj1]=((Ij0LIiOii1lI[IlIOI0lOj1] or 0)+llLII0ilI)%(L0II11oo+1)
+elseif il0ooOl1o==40 then
+Ij0LIiOii1lI[IlIOI0lOj1]=Ij0LIiOii1lI[llLII0ilI]%Ij0LIiOii1lI[L0II11oo]
+elseif il0ooOl1o==43 then
+ji0Ij1ll1j[li1Ioj01(iiL1LO,loOii1l,llLII0ilI+1)]=Ij0LIiOii1lI[IlIOI0lOj1]
+elseif il0ooOl1o==33 then
+jI0oOI[llLII0ilI+1][1]=Ij0LIiOii1lI[IlIOI0lOj1]
+elseif il0ooOl1o==16 then
+Ij0LIiOii1lI[IlIOI0lOj1]=Ij0LIiOii1lI[llLII0ilI]
+elseif il0ooOl1o==1 then
+Ij0LIiOii1lI[llLII0ilI][1]=Ij0LIiOii1lI[IlIOI0lOj1]
+elseif il0ooOl1o==41 then
+Ij0LIiOii1lI[IlIOI0lOj1+1]=Ij0LIiOii1lI[llLII0ilI]; Ij0LIiOii1lI[IlIOI0lOj1]=Ij0LIiOii1lI[llLII0ilI][Ij0LIiOii1lI[L0II11oo]]
+elseif il0ooOl1o==21 then
+Ij0LIiOii1lI[IlIOI0lOj1]=li1Ioj01(iiL1LO,loOii1l,llLII0ilI+1)
+elseif il0ooOl1o==32 then
+local I1lIolji
+if llLII0ilI==0 then I1lIolji=i0oloi0liljol-IlIOI0lOj1 else I1lIolji=llLII0ilI-1 end
+local jLiOLL1lolj0oj={}
+for IIjI11jOi0Oi1=1,I1lIolji do jLiOLL1lolj0oj[IIjI11jOi0Oi1]=Ij0LIiOii1lI[IlIOI0lOj1+IIjI11jOi0Oi1-1] end
+return jlLliiloi(jLiOLL1lolj0oj,1,I1lIolji)
+else I1lI11OIoL() end
+end
+return LoLji10j1L
+end
+return ILjlo0II(LoiL1jljol1i,{},jljo10oL(...))
